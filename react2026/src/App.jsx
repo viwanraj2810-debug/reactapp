@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import Hero from "./assets/hero.png";
-import Product from "./Product";
-import Form from "./Form"
+import React, { useState } from 'react';
+import Form from './Form';
+import Product from './Product';
 
 const App = () => {
-  const [username, setUsername] = useState(69);
+ const [userName, setUserName] = useState("")
+ const [profile, setProfile] = useState("")
   return (
-    <>
-      <div className="bg-zinc-900 w-full h-screen flex flex-col items-center  justify-start gap-3">
-       
-        <Product username={username} />
+    <div className='bg-zinc-900 w-full h-screen flex justify-start flex-col'>
+      
+      <div className='p-10 '>
+         <Form props= {{setProfile, setUserName}} />
+        </div> 
 
-        <Form objs={{setUsername}}/>
-      </div>s
-    </>
+        <div>
+        <Product props = {{userName, profile}}/>
+
+        </div>
+    </div>
   );
-};
+}
 
 export default App;
