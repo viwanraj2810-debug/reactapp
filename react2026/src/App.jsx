@@ -3,17 +3,16 @@ import Form from './Form';
 import Product from './Product';
 
 const App = () => {
- const [userName, setUserName] = useState("")
- const [profile, setProfile] = useState("")
+ const [user = [], setUser = []] = useState()
   return (
     <div className='bg-zinc-900 w-full h-screen flex justify-start flex-col'>
       
       <div className='p-10 '>
-         <Form props= {{setProfile, setUserName}} />
+         <Form users= {{user,setUser}} />
         </div> 
 
         <div>
-        <Product props = {{userName, profile}}/>
+        <Product props = {{user}}/>
 
         </div>
     </div>

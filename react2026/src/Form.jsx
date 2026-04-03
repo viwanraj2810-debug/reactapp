@@ -3,17 +3,22 @@ import React, { useState } from 'react';
 
 
 
-const Form = ({props}) => {
+const Form = ({users}) => {
   const [profileInput, setProfileInput]= useState('')
   const [usernameInput, setUserNameInput]= useState('')
   const formHandler = (e) => {
+
    e.preventDefault()
-  props.setUserName(usernameInput)
-  props.setProfile(profileInput)
-   console.log(usernameInput)
-   console.log(profileInput)
+   let oldUser = users.user
+   let newuser = {"username" : usernameInput, "profile" : profileInput}
+   users.setUser([...oldUser,newuser])
+
+   console.log(newuser)
+   console.log(oldUser)
+
    setProfileInput("")
    setUserNameInput("")
+  
   }
   return (
     <div>
