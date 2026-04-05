@@ -1,25 +1,31 @@
-import React from "react";
+import React from 'react';
 
-const Product = ({ props }) => {
-  const userList = props.user;
-
+const Product = (props) => {
+  const data = Array.isArray(props.data) ? props.data : []
   return (
-    <div className="flex">
-      {userList.map((user, index) => {
-      return  <div
-          key={index}
-          className="bg-purple-400 h-28 w-20 rounded-md m-2 p-2 flex flex-col justify-center items-center"
-        >
-          <img
-            className="rounded-full h-10 w-10"
-            src={`${user.profile}`}
-            alt="image"
-          />
-          <h1>{user.username}</h1>
-        </div>;
-      })}
-    </div>
+ <>
+  <div className='grid grid-cols-[repeat(auto-fit,minmax(200px,3fr))] gap-6 p-4'> 
+
+    {data.map((item, index) => (
+      <div 
+      key={index}
+       
+        className='bg-emerald-800 h-52 rounded-md flex flex-col items-center p-3'
+      >
+        <img 
+          className="rounded-full h-20 w-20 object-cover" 
+          src={item.download_url} 
+          alt="" 
+        />
+        <h1 className='font-semibold text-xl text-fuchsia-50 mt-2 text-center'>
+          {item.author}
+        </h1>
+      </div>
+    ))}
+
+  </div>
+</>
   );
-};
+}
 
 export default Product;
