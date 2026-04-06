@@ -1,30 +1,35 @@
-import { useState } from "react"
+import React, { useState } from 'react';
 
 
-const Form = ({objs}) => {
-    const [inputName, setInputName]=useState("")
-    
-    
-    
-    const formHandler = (e)=>{
-        e.preventDefault()
-        //  const data = new FormData(e.target);
-        console.log(inputName)
-        objs.setUsername(inputName);
-        setInputName('')
-    }
-    return (
-        <>
-      <div>
-        
 
-      <form onSubmit={formHandler} className='bg-blue-400 h-32 w-42 p-2 flex flex-col gap-2'>
-        <input type="text" value={inputName} onChange={(e)=>setInputName(e.target.value)} placeholder='write something' className='bg-blue-100 w-32 rounded-md' name='name' />
-        <button  type='submit' className='bg-blue-900 w-15 rounded-md'> Submit</button>
+
+const Form = ({users}) => {
+  const [profileInput, setProfileInput]= useState('')
+  const [usernameInput, setUserNameInput]= useState('')
+  const formHandler = (e) => {
+
+   e.preventDefault()
+   let oldUser = users.user
+   let newuser = {"username" : usernameInput, "profile" : profileInput}
+   users.setUser([...oldUser,newuser])
+
+   console.log(newuser)
+   console.log(oldUser)
+
+   setProfileInput("")
+   setUserNameInput("")
+  
+  }
+  return (
+    <div>
+      <form onSubmit={formHandler} className='bg-emerald-600 w-52 h-52 flex flex-col p-4 gap-3 rounded-md' action="">
+        <input value={usernameInput} onChange={(e)=>setUserNameInput(e.target.value)} type="text" className='bg-green-200 w-40 h-10 rounded-md  p-4 ' placeholder='Usename' />
+        <input value={profileInput} onChange={(e)=>setProfileInput(e.target.value)} type="text" className='bg-green-200 w-40 h-10 rounded-md  p-4  ' placeholder='Profile pic' />
+      
+        <button className='bg-amber-200 w-24 h-10 rounded-md'>Submit</button>
       </form>
-      </div>
-   
-   </>
+      
+    </div>
   );
 }
 
