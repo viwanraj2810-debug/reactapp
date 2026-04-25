@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import FetchData from "./component/FetchData";
+import UserContextProvider from "./context/UserContextProvider";
+import DisplayData from "./component/DisplayData";
 
 const App = () => {
   const [range, setRange] = useState(8);
@@ -64,7 +67,13 @@ const App = () => {
             className="cursor-pointer"
           />
         </div>
+      
+      <FetchData/>
+      <DisplayData/>
       </div>
+      
+
+  
     </>
   );
 };
